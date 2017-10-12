@@ -1,0 +1,7 @@
+file(GLOB SZ_SRC "${CMAKE_SOURCE_DIR}/deps/sz/src/*.c")
+file(GLOB SZ_INC "${CMAKE_SOURCE_DIR}/deps/sz/include/*.h")
+
+append_property(SOURCE ${SZ_SRC} PROPERTY COMPILE_FLAGS "-fPIC")
+
+add_library(sz OBJECT ${SRC_sz})
+target_include_directories(sz PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include" "${CMAKE_CURRENT_SOURCE_DIR}/../zlib")
