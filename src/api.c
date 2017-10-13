@@ -619,7 +619,7 @@ int FTI_Recover()
 				fread(&cmpSize, 8, 1, fd);
 				FTI_Data[i].ptr2 = (unsigned char*)malloc(cmpSize);
 				fread(FTI_Data[i].ptr2, 1, cmpSize, fd);
-				FTI_Data[i].ptr = SZ_decompress(SZ_DOUBLE, FTI_Data[i].ptr2, cmpSize, 0, 0, 0, 0, FTI_Data[i].count);
+				SZ_decompress_args(SZ_DOUBLE, FTI_Data[i].ptr2, cmpSize, FTI_Data[i].ptr, 0, 0, 0, 0, FTI_Data[i].count);
 //				printf("FTI_Data[%d].ptr[0]=%lf, cmpSize=%ld\n", i, ((double*)FTI_Data[i].ptr)[0], cmpSize);
 				free(FTI_Data[i].ptr2);
 			}
@@ -628,7 +628,7 @@ int FTI_Recover()
 				fread(&cmpSize, 8, 1, fd);				
 				FTI_Data[i].ptr2 = (unsigned char*)malloc(cmpSize);
 				fread(FTI_Data[i].ptr2, 1, cmpSize, fd);
-				FTI_Data[i].ptr = SZ_decompress(SZ_FLOAT, FTI_Data[i].ptr2, cmpSize, 0, 0, 0, 0, FTI_Data[i].count);
+				SZ_decompress_args(SZ_FLOAT, FTI_Data[i].ptr2, cmpSize, FTI_Data[i].ptr, 0, 0, 0, 0, FTI_Data[i].count);
 				free(FTI_Data[i].ptr2);
 			}
 			else
