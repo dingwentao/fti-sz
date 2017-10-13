@@ -475,14 +475,14 @@ int FTI_Checkpoint(int id, int level)
 		FTI_Exec.ckptSize = 0;
 		for(i=0; i<FTI_Exec.nbVar; i++)
 		{
-			if(FTI_Data[i].type.id == FTI_SFLT.id)
+			if((FTI_Data[i].type.id == FTI_SFLT.id) && (FTI_Data[i].count > 1))
 			{
 				bytes = SZ_compress(SZ_FLOAT, (float*)(FTI_Data[i].ptr), &outSize, 0, 0, 0, 0, FTI_Data[i].count);
 				FTI_Data[i].size = outSize;
 				FTI_Data[i].ptr2 = bytes;
 				FTI_Exec.ckptSize += (8+FTI_Data[i].size);				
 			}	
-			else if(FTI_Data[i].type.id == FTI_DBLE.id)
+			else if((FTI_Data[i].type.id == FTI_DBLE.id) && (FTI_Data[i].count > 1))
 			{
 //				printf("myRank=%d, (double*)(FTI_Data[%d].ptr)[0]=%lf\n", FTI_Topo.myRank, i, ((double*)(FTI_Data[i].ptr))[0]);
 
@@ -614,7 +614,7 @@ int FTI_Recover()
     for (i = 0; i < FTI_Exec.nbVar; i++) {
 		if(compressorName==SZ_COMPRESSOR)
 		{	
-			if(FTI_Data[i].type.id == FTI_DBLE.id)
+			if((FTI_Data[i].type.id == FTI_DBLE.id) && (FTI_Data[i].count > 1))
 			{
 				fread(&cmpSize, 8, 1, fd);
 				FTI_Data[i].ptr2 = (unsigned char*)malloc(cmpSize);
@@ -623,7 +623,7 @@ int FTI_Recover()
 //				printf("FTI_Data[%d].ptr[0]=%lf, cmpSize=%ld\n", i, ((double*)FTI_Data[i].ptr)[0], cmpSize);
 				free(FTI_Data[i].ptr2);
 			}
-			else if(FTI_Data[i].type.id == FTI_SFLT.id)
+			else if((FTI_Data[i].type.id == FTI_SFLT.id) && (FTI_Data[i].count > 1))
 			{
 				fread(&cmpSize, 8, 1, fd);				
 				FTI_Data[i].ptr2 = (unsigned char*)malloc(cmpSize);
