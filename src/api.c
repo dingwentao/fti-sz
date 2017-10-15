@@ -576,6 +576,8 @@ int FTI_Recover()
     char fn[FTI_BUFS]; //Path to the checkpoint file
     char str[FTI_BUFS]; //For console output
 
+    double t0 = MPI_Wtime(); //Start time
+
     //Check if nubmer of protected variables matches
     if (FTI_Exec.nbVar != FTI_Exec.meta[FTI_Exec.ckptLvel].nbVar[0]) {
         sprintf(str, "Checkpoint has %d protected variables, but FTI protects %d.",
@@ -667,6 +669,12 @@ int FTI_Recover()
         return FTI_NREC;
     }
     FTI_Exec.reco = 0;
+
+    double t1 = MPI_Wtime(); //Time after recovering
+
+    sprintf(str, "Recv. taken in %.2f sec.", t1 - t0);
+    FTI_Print(str, FTI_INFO);
+
     return FTI_SCES;
 }
 
