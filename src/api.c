@@ -502,11 +502,11 @@ int FTI_Checkpoint(int id, int level)
 		{
 			if(((FTI_Data[i].type.id == FTI_SFLT.id) || (FTI_Data[i].type.id == FTI_DBLE.id)) && (FTI_Data[i].count > 1))
 			{
-				outSize = zlib_compress((unsigned char*)(FTI_Data[i].ptr), FTI_Data[i].size, &bytes, gzipMode);
+				outSize = zlib_compress((unsigned char*)(FTI_Data[i].ptr), FTI_Data[i].count*FTI_Data[i].eleSize, &bytes, gzipMode);
 				FTI_Data[i].size = outSize;
 				FTI_Data[i].ptr2 = bytes;
 				FTI_Exec.ckptSize += (8+FTI_Data[i].size);								
-				//printf("FTI_Data[%d].size=%d\n", i, outSize);		
+				//printf("FTI_Data[%d].size=%d\n", i, outSize);
 			}
 			else
 				FTI_Exec.ckptSize += FTI_Data[i].size;							
