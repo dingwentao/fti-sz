@@ -40,5 +40,5 @@ The most important is CMake version: the newer the better.
 ---
 Configure and run example
 ===
-The "build/examples" directory contains heat distribution simulations as simple
-examples in both, C and Fortran. Usage instructions in file "examples/README".
+The "build/examples" directory contains heat distribution simulation as a simple
+example in C. Usage instructions in file "examples/README".
