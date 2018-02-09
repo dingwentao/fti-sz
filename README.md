@@ -15,7 +15,7 @@ For the case that both Intel and GCC compilers are installed, please configure u
 OpenSSL
 ===
 To use the built-in MD5 rather than OpenSSL, please configure using:  
-`cmake -DNO_OPENSSL=true -DCMAKE_INSTALL_PREFIX:PATH=/install/here/fti-sz ..`
+`cmake -DNO_OPENSSL=true -DCMAKE_INSTALL_PREFIX:[installation path] ..`
 
 ---
 Cray System
