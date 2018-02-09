@@ -1,13 +1,15 @@
-1) Make sure that FTI library is accessible in your LD_LIBRARY_PATH.
+1) Make sure that lossy checkpointing library is accessible in your LD_LIBRARY_PATH.
 
-2) Go to "fti/build/examples".
+2) Go to "lossy-checkpoint/build/examples".
 
-3) With your favorite text editor open and edit the FTI configuration file
-   configBkp.fti to set the three directory variables.
+3) With your favorite text editor open and edit the checkpointing configuration file
+   config.fti to set the three directory variables.
+    - vim config.fti (Edit Ckpt_dir, Glbl_dir, Meta_dir)
 
-    - vim configBkp.fti (Edit Ckpt_dir, Glbl_dir, Meta_dir)
+(4) Edit the lossy compression configuration file sz.config. 
+	- vim sz.config
 
-4) Run examples by going to fti/build/examples and:
+4) Run examples by going to lossy-checkpoint/build/examples and:
 	- execute:	"make init"	<- copies configBkp.fti to config.fti
 	- execute:	"make hd"	<- runs first example (heatdis.c)
 	- after FTI creates checkpoint press "ctrl + c" to abort a process
