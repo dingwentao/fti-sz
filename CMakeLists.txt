@@ -259,6 +259,7 @@ configure_file(CMakeScripts/FTIConfig.cmake.in "${PROJECT_BINARY_DIR}/FTIConfig.
 
 file(COPY examples/config.fti DESTINATION examples)
 file(COPY examples/configBkp.fti DESTINATION examples)
+file(COPY examples/sz.config DESTINATION examples)
 file(COPY examples/plot.sh DESTINATION examples)
 file(COPY examples/vplot.plg DESTINATION examples)
 file(COPY examples/README DESTINATION examples)
