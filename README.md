@@ -1,5 +1,4 @@
 Download, compile and install lossy checkpointing (as easy as 1,2,3)
-
 1) git clone https://github.com/dingwentao/lossy-checkpoint.git
 2) mkdir lossy-checkpoint/build && cd lossy-checkpoint/build
 3) cmake -DCMAKE_INSTALL_PREFIX:PATH=[installation path] .. && make all install
