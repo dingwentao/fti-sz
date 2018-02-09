@@ -6,20 +6,21 @@
    config.fti to set the three directory variables.
     - vim config.fti (Edit Ckpt_dir, Glbl_dir, Meta_dir)
 
-(4) Edit the lossy compression configuration file sz.config. 
+4) Edit the lossy compression configuration file sz.config to set the parameters for
+	lossy compression, such as error bound mode and error bound.
 	- vim sz.config
 
-4) Run examples by going to lossy-checkpoint/build/examples and:
-	- execute:	"make init"	<- copies configBkp.fti to config.fti
-	- execute:	"make hd"	<- runs first example (heatdis.c)
+5) Run example by going to lossy-checkpoint/build/examples and:
+	- execute:	"make hd"	<- runs first example (heatdis.c) with no compressor
 	- after FTI creates checkpoint press "ctrl + c" to abort a process
 	- execute:	"make hd"
 	- see that work will continue from last checkpoint
 	- wait for program to finish
 
-   If you want run different example instead of "make hd" execute:
-	- "make hd2" 	<- runs second example (heatd2.c)
-	- "make hdf"	<- runs third example (fheatdis.f90)
-	- "make runall" 	<- runs all examples
-
-   After running hd2 execute plot.sh and go to "results" folder to see PNG files with graphs.
+6) Change to SZ lossy compressor and re-run example:
+	- vim config.fit: compressor = 3
+	- execute:	"make hd"	<- runs first example (heatdis.c) with no compressor
+	- after FTI creates checkpoint press "ctrl + c" to abort a process
+	- execute:	"make hd"
+	- see that work will continue from last checkpoint
+	- wait for program to finish
